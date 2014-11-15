@@ -16,6 +16,7 @@ import jpm.codeforgood.model.Connect;
 import jpm.codeforgood.model.Messages;
 import jpm.codeforgood.model.Names;
 import jpm.codeforgood.rowmapper.ChatMessageRowMapper;
+import jpm.codeforgood.twilio.SMSSendingService;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -33,7 +34,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.twilio.sdk.TwilioRestException;
+
 
 @RestController
 @RequestMapping(value = { "/api", "/" })
@@ -73,6 +79,20 @@ public class ApiController {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	
+	@RequestMapping(value = "/sendsms", method = RequestMethod.GET, params = {"to", "text"})
+	public @ResponseBody String getAllUsers(@RequestParam(value = "to") String to, 
+											@RequestParam(value = "text") String text) {	
+		SMSSendingService sss;
+		try {
+			sss = new SMSSendingService();
+			return sss.sendMessage("+" + to, text);
+		} catch (TwilioRestException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	@Transactional
 	@RequestMapping(value = "/names", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
