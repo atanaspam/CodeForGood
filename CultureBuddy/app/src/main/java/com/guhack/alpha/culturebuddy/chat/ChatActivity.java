@@ -1,8 +1,10 @@
 package com.guhack.alpha.culturebuddy.chat;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,31 +23,37 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.guhack.alpha.culturebuddy.R;
 
+import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
 public class ChatActivity extends ActionBarActivity {
 
     private ChatAdapter adapter;
+    private String lastresponse;
+    private MessageGetter messageGetter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        lastresponse = "";
 
         android.support.v7.app.ActionBar actionbar = getSupportActionBar();
         actionbar.setIcon(R.drawable.ic_aziz);
         actionbar.setTitle("Aziz Ansari");
 
+        messageGetter = new MessageGetter();
+
         /** mock code */
-            ArrayList<ChatMessage> list = new ArrayList<ChatMessage>();
-            for (String temp : ("Hi!,How are you doing?, Today was a very " +
-                    "long day here in Pakistan so I will write a very long message to show how " +
-                    "line breaks work here, I know you are not responding only because I am not " +
-                    "real so I will not hold it against you.,Are you still there?").split(",")){
-                ChatMessage message = new ChatMessage(temp, false);
-                list.add(message);
-            }
+        ArrayList<ChatMessage> list = new ArrayList<ChatMessage>();
+        for (String temp : ("Hi!,How are you doing?, Today was a very " +
+                "long day here in Pakistan so I will write a very long message to show how " +
+                "line breaks work here, I know you are not responding only because I am not " +
+                "real so I will not hold it against you.,Are you still there?").split(",")) {
+            ChatMessage message = new ChatMessage(temp, false);
+            list.add(message);
+        }
         /***/
 
         adapter = new ChatAdapter("Aziz Ansari", list, ChatActivity.this);
@@ -64,6 +72,8 @@ public class ChatActivity extends ActionBarActivity {
                 ((EditText) findViewById(R.id.your_message)).setText("");
             }
         });
+
+        messageGetter.execute();
     }
 
 
@@ -95,7 +105,7 @@ public class ChatActivity extends ActionBarActivity {
         private LayoutInflater inflater;
         private String buddy;
 
-        public ChatAdapter(String buddy, ArrayList<ChatMessage> messages, Context context){
+        public ChatAdapter(String buddy, ArrayList<ChatMessage> messages, Context context) {
             this.inflater = LayoutInflater.from(context);
             this.messages = messages;
             this.buddy = buddy;
@@ -131,15 +141,20 @@ public class ChatActivity extends ActionBarActivity {
 
         private void bind(ChatMessage message, View view) {
             ViewHolder holder = (ViewHolder) view.getTag();
+            if (holder == null) return;
             holder.message.setText(message.getMessage());
             String name;
             if (message.isSentByYou())
                 name = "Me: ";
-            else name = buddy+": ";
+            else name = buddy + ": ";
             holder.nametag.setText(name);
         }
 
         private View inflateIfRequired(View view, int position, ViewGroup parent) {
+            if (getItem(position).getMessage().equals("audio")){
+                view = inflater.inflate(R.layout.row_audio, parent, false);
+                return view;
+            }
             if (view == null) {
                 view = inflater.inflate(R.layout.row_chat_message, parent, false);
                 view.setTag(new ViewHolder(view));
@@ -147,12 +162,12 @@ public class ChatActivity extends ActionBarActivity {
             return view;
         }
 
-        protected class ViewHolder{
+        protected class ViewHolder {
 
             TextView message;
             TextView nametag;
 
-            ViewHolder(View view){
+            ViewHolder(View view) {
                 message = (TextView) view.findViewById(R.id.chat_message_text);
                 nametag = (TextView) view.findViewById(R.id.chat_name_tag);
             }
@@ -160,20 +175,19 @@ public class ChatActivity extends ActionBarActivity {
         }
     }
 
-    private void send(String msg){
+    private void send(String msg) {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
         String fromuser = "vlad";
         String touser = "martin";
         String url = String.format("http://ec2-54-228-159-65.eu-west-1.compute.amazonaws.com:8080/CodeForGood17" +
                 "/sendsms?from=%s&to=%s&text=%s", fromuser, touser, URLEncoder.encode(msg));
-
+        Log.e("jjj", url);
 // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>(){
+                new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
 
                     }
                 }, new Response.ErrorListener() {
@@ -183,5 +197,62 @@ public class ChatActivity extends ActionBarActivity {
         });
 // Add the request to the RequestQueue.
         queue.add(stringRequest);
+    }
+
+    private class MessageGetter extends AsyncTask<URL, Integer, Long> {
+        public boolean run;
+
+        protected Long doInBackground(URL... urls) {
+            run = true;
+            while (run) {
+                getMessages();
+                try {
+                    synchronized (this) {
+                        wait(5000);
+                    }
+                } catch (InterruptedException e) {
+
+                }
+
+
+            }
+            return null;
+        }
+
+        public void getMessages() {
+            // Instantiate the RequestQueue.
+            RequestQueue queue = Volley.newRequestQueue(ChatActivity.this);
+            String url = "http://ec2-54-228-159-65.eu-west-1.compute.amazonaws.com:8080/CodeForGood17/receivesms?name=vlad";
+// Request a string response from the provided URL.
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(final String response) {
+                            if (!response.equals(lastresponse)) {
+                                runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        Log.e("eeee", response);
+                                        lastresponse = response;
+                                        adapter.addMessage(new ChatMessage(response, false));
+                                        ((ListView) findViewById(R.id.chat_list)).setSelection(adapter.getCount() - 1);
+                                        ((EditText) findViewById(R.id.your_message)).setText("");
+                                    }
+                                });
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                }
+            });
+// Add the request to the RequestQueue.
+            queue.add(stringRequest);
+        }
+    }
+    @Override
+    protected void onDestroy() {
+        messageGetter.run = false;
+        messageGetter.cancel(true);
+        super.onDestroy();
     }
 }
