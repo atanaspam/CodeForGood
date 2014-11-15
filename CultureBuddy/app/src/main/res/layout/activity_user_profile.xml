@@ -2,8 +2,63 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="@drawable/profile_background"
     tools:context="com.guhack.alpha.culturebuddy.userprofile.UserProfileActivity">
 
+    <ImageView
+        android:id="@+id/profile_voice_button"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="173dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:background="@drawable/circle_green"
+        android:src="@android:drawable/ic_menu_call"
+        android:padding="10dp"/>
 
+    <ImageView
+        android:layout_marginLeft="67dp"
+        android:layout_marginTop="278dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:background="@drawable/circle_green"
+        android:src="@android:drawable/ic_input_add"/>
+
+    <ImageView
+        android:layout_marginLeft="165dp"
+        android:layout_marginTop="110dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:background="@drawable/circle_green"
+        android:src="@android:drawable/stat_notify_chat"
+        android:padding="10dp"/>
+
+    <ImageView
+        android:layout_marginLeft="215dp"
+        android:layout_marginTop="275dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:background="@drawable/circle_green"
+        android:src="@android:drawable/ic_menu_camera"
+        android:padding="10dp"/>
+
+    <ImageView
+        android:layout_marginLeft="195dp"
+        android:layout_marginTop="183dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:background="@drawable/circle_green"
+        android:src="@android:drawable/ic_dialog_info"
+        android:padding="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is your profile page"
+        android:textSize="22sp"/>
+
+    <ImageView
+        android:src="@drawable/ic_global_nomads"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"/>
 
 </RelativeLayout>

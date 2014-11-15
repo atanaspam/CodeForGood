@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:fillViewport="true"
     android:padding="16dp"
-    tools:context=".StartupActivity"
-    android:background="@android:color/white">
+    tools:context=".StartupActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,20 +20,22 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_global_nomads"/>
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Culture Buddy"
-                android:textSize="30sp"
-                android:gravity="center"/>
+                    android:src="@drawable/ic_global_nomads" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Culture Buddy"
+                    android:textSize="30sp"
+                    android:layout_marginBottom="10dp"/>
 
             </LinearLayout>
 

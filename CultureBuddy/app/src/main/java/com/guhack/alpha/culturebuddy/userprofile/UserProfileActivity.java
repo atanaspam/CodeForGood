@@ -13,6 +13,9 @@ public class UserProfileActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
+        android.support.v7.app.ActionBar actionbar = getSupportActionBar();
+        if (actionbar != null) actionbar.hide();
     }
 
 

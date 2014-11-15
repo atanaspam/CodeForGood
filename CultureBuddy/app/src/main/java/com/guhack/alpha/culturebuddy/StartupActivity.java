@@ -1,11 +1,15 @@
 package com.guhack.alpha.culturebuddy;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+
+import com.guhack.alpha.culturebuddy.userprofile.UserProfileActivity;
 
 
 public class StartupActivity extends ActionBarActivity {
@@ -20,6 +24,13 @@ public class StartupActivity extends ActionBarActivity {
         TextView myTextView=(TextView)findViewById(R.id.title);
         Typeface typeFace=Typeface.createFromAsset(getAssets(),"fontmain.ttf");
         myTextView.setTypeface(typeFace);
+
+        findViewById(R.id.signin_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(StartupActivity.this, UserProfileActivity.class));
+            }
+        });
     }
 
 
