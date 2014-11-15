@@ -21,7 +21,7 @@ public class Main {
 	public static String translate(String text, String inputLanguage, String outputLanguage){
 	  
 		
-		GoogleAPI.setHttpReferrer("www.CodeForGood.com");
+		GoogleAPI.setHttpReferrer("www.lool.com");
 
 		GoogleAPI.setKey("AIzaSyDZnUPNlvjgAQzLhZzfB396fJCR49bN5F0");
 		
@@ -38,16 +38,17 @@ public class Main {
 	
 	public static Language getLanguage(String rawLanguage){
 		
-		if (! isAlpha(rawLanguage)){
-			System.out.println("Invalid language type input.");
-			return Language.AUTO_DETECT;
-		}
+		//if (! isAlpha(rawLanguage)){
+		//	System.out.println("Invalid language type input.");
+		//	return Language.AUTO_DETECT;
+		//}
 		
 		
 		HashMap<String , Language> h = new HashMap<String , Language>();
 		h.put("ZA", Language.AFRIKAANS);
 		h.put("PY", Language.GUARANI);
 		h.put("PT", Language.PORTUGUESE);
+		//h.put("PK", Language.PASHTO);
 		h.put("AutoDetect", Language.AUTO_DETECT);
 		h.put("EN", Language.ENGLISH);
 		h.put("AR", Language.ARABIC);
@@ -62,10 +63,9 @@ public class Main {
 			return Language.AUTO_DETECT;
 		}
 		
+		
+		
 	}
 	
-	public static boolean isAlpha(String name) {
-	    return name.matches("[a-zA-Z]+");
-	}
   
 }
