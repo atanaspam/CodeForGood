@@ -27,6 +27,15 @@ public class UserProfileActivity extends ActionBarActivity {
         Typeface typeFace=Typeface.createFromAsset(getAssets(),"fontmain.ttf");
         myTextView.setTypeface(typeFace);
 
+        findViewById(R.id.website_link).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("http://gng.org/"));
+                startActivity(i);
+            }
+        });
+
         findViewById(R.id.look_for_contacts).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

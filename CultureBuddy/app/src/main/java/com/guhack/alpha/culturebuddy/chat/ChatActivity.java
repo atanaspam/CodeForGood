@@ -1,7 +1,9 @@
 package com.guhack.alpha.culturebuddy.chat;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -104,12 +106,12 @@ public class ChatActivity extends ActionBarActivity {
         private ArrayList<ChatMessage> messages;
         private LayoutInflater inflater;
         private String buddy;
+        public MediaPlayer player;
 
         public ChatAdapter(String buddy, ArrayList<ChatMessage> messages, Context context) {
             this.inflater = LayoutInflater.from(context);
             this.messages = messages;
             this.buddy = buddy;
-
         }
 
         @Override
@@ -254,5 +256,18 @@ public class ChatActivity extends ActionBarActivity {
         messageGetter.run = false;
         messageGetter.cancel(true);
         super.onDestroy();
+    }
+
+    public void audioPlayer(String path, String fileName){
+        //set up MediaPlayer
+        MediaPlayer mp = new MediaPlayer();
+
+        try {
+            mp.setDataSource(path+"/"+fileName);
+            mp.prepare();
+            mp.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
