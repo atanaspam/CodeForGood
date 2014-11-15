@@ -48,6 +48,9 @@ public class ApiController {
 			sss = new SMSSendingService();
 			if (!lastMsg.equals(text)) {
 				lastMsg = text;
+				if (fromUserName.equals("vlad")) {
+					text = Translation.Translation.translate(text, "EN", "PT"); 
+				}
 				return sss.sendMessage("+" + phoneNo, text);
 			}
 		} catch (TwilioRestException e) {
@@ -72,6 +75,9 @@ public class ApiController {
 				l.add(m);
 		}
 		
+		if (getPhoneForUsername("martin").equals(l.get(0).getFrom().substring(1))) {
+			return Translation.Translation.translate(l.get(0).getBody(), "PT", "EN"); 
+		}
 		return l.get(0).getBody();
 	}
 	

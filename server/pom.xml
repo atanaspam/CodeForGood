@@ -158,11 +158,17 @@
 			<artifactId>twilio-java-sdk</artifactId>
 			<version>3.4.5</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.googlecode</groupId>
 			<artifactId>google-api-translate-java</artifactId>
 			<version>0.97</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20090211</version>
 		</dependency>
 
 
