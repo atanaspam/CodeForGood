@@ -1,46 +1,28 @@
-package com.guhack.alpha.culturebuddy.userprofile;
+package com.guhack.alpha.culturebuddy.chat;
 
-import android.content.Intent;
-import android.graphics.Typeface;
-import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 import com.guhack.alpha.culturebuddy.R;
 
-public class UserProfileActivity extends ActionBarActivity {
+public class ChatActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile);
+        setContentView(R.layout.activity_chat);
 
         android.support.v7.app.ActionBar actionbar = getSupportActionBar();
         if (actionbar != null) actionbar.hide();
-
-        TextView myTextView=(TextView)findViewById(R.id.profile_title);
-        Typeface typeFace=Typeface.createFromAsset(getAssets(),"fontmain.ttf");
-        myTextView.setTypeface(typeFace);
-
-        findViewById(R.id.website_link).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("http://gng.org/"));
-                startActivity(i);
-            }
-        });
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_user_profile, menu);
+        getMenuInflater().inflate(R.menu.menu_chat, menu);
         return true;
     }
 

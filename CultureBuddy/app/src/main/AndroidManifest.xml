@@ -10,7 +10,7 @@
         <activity
             android:name="com.guhack.alpha.culturebuddy.StartupActivity"
             android:label="@string/app_name"
-            android:windowSoftInputMode="stateHidden">
+            android:windowSoftInputMode="stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,6 +20,10 @@
         <activity
             android:name="com.guhack.alpha.culturebuddy.userprofile.UserProfileActivity"
             android:label="@string/title_activity_user_profile" >
+        </activity>
+        <activity
+            android:name="com.guhack.alpha.culturebuddy.chat.ChatActivity"
+            android:label="@string/title_activity_chat" >
         </activity>
     </application>
 
