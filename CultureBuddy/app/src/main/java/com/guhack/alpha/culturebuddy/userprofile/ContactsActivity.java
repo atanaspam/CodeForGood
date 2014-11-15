@@ -17,6 +17,9 @@ import com.guhack.alpha.culturebuddy.chat.ChatMessage;
 
 import java.util.ArrayList;
 
+/**
+ * stub contacts view that has no functionality
+ */
 public class ContactsActivity extends ActionBarActivity {
 
     @Override

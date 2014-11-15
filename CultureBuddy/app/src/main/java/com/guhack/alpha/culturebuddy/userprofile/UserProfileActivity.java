@@ -13,6 +13,10 @@ import android.widget.TextView;
 import com.guhack.alpha.culturebuddy.R;
 import com.guhack.alpha.culturebuddy.chat.ChatActivity;
 
+/**
+ * this is the control center of the app
+ * all the activities are launched from here
+ */
 public class UserProfileActivity extends ActionBarActivity {
 
     @Override

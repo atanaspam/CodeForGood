@@ -29,11 +29,16 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+/***
+ * This is the main communications activity
+ * Smartphone users can send text messages over the internet
+ * that will later be received by users on regular mobile phones
+ */
 public class ChatActivity extends ActionBarActivity {
 
-    private ChatAdapter adapter;
-    private String lastresponse;
-    private MessageGetter messageGetter;
+    private ChatAdapter adapter;//handles chat messages
+    private String lastresponse;//logs the last message received from the contact, as it can sometimes be sent multiple times
+    private MessageGetter messageGetter;//runnable that keeps asking for new messages
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +48,11 @@ public class ChatActivity extends ActionBarActivity {
 
         android.support.v7.app.ActionBar actionbar = getSupportActionBar();
         actionbar.setIcon(R.drawable.ic_aziz);
-        actionbar.setTitle("Aziz Ansari");
+        actionbar.setTitle("Aziz Ansari");//hardcoded buddy name, since
 
         messageGetter = new MessageGetter();
 
-        /** mock code */
+        /** mock code these are sample preset emssages*/
         ArrayList<ChatMessage> list = new ArrayList<ChatMessage>();
         for (String temp : ("Hi!,How are you doing?, Today was a very " +
                 "long day here in Pakistan so I will write a very long message to show how " +
@@ -63,6 +68,8 @@ public class ChatActivity extends ActionBarActivity {
         adapter.notifyDataSetChanged();
         ((ListView) findViewById(R.id.chat_list)).setSelection(adapter.getCount() - 1);
 
+        //handles the send message button, this makes the request to send a plain text message to a phone
+        //the recipient for now is hardcoded, as we did not manage to get a database going in time
         findViewById(R.id.send_message_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +77,19 @@ public class ChatActivity extends ActionBarActivity {
                 if (msg.isEmpty()) return;
                 adapter.addMessage(new ChatMessage(msg, true));
                 send(msg);
+                ((ListView) findViewById(R.id.chat_list)).setSelection(adapter.getCount() - 1);
+                ((EditText) findViewById(R.id.your_message)).setText("");
+            }
+        });
+        //this is similar to the previous button, except the text will be read out loud via phone call
+        //the only difference here is that a different GET request is used
+        findViewById(R.id.rec_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String msg = ((EditText) findViewById(R.id.your_message)).getText().toString();
+                if (msg.isEmpty()) return;
+                adapter.addMessage(new ChatMessage(msg + "(voice)", true));
+                sendvoice(msg);
                 ((ListView) findViewById(R.id.chat_list)).setSelection(adapter.getCount() - 1);
                 ((EditText) findViewById(R.id.your_message)).setText("");
             }
@@ -101,12 +121,12 @@ public class ChatActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**this adapter handles all the messages being shown to the user*/
     protected class ChatAdapter extends BaseAdapter {
 
         private ArrayList<ChatMessage> messages;
         private LayoutInflater inflater;
         private String buddy;
-        public MediaPlayer player;
 
         public ChatAdapter(String buddy, ArrayList<ChatMessage> messages, Context context) {
             this.inflater = LayoutInflater.from(context);
@@ -181,9 +201,32 @@ public class ChatActivity extends ActionBarActivity {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
         String fromuser = "vlad";
-        String touser = "martin";
+        String touser = "jpm";
         String url = String.format("http://ec2-54-228-159-65.eu-west-1.compute.amazonaws.com:8080/CodeForGood17" +
                 "/sendsms?from=%s&to=%s&text=%s", fromuser, touser, URLEncoder.encode(msg));
+        Log.e("jjj", url);
+// Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+    private void sendvoice(String msg) {
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String fromuser = "vlad";
+        String touser = "jpm";
+        String url = String.format("http://ec2-54-228-159-65.eu-west-1.compute.amazonaws.com:8080/CodeForGood17/call?from=%s&to=%s&text=%s", fromuser, touser, URLEncoder.encode(msg));
         Log.e("jjj", url);
 // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -221,6 +264,8 @@ public class ChatActivity extends ActionBarActivity {
             return null;
         }
 
+        //requests last sent message (this needs to be improved server side,
+        //because only the very last message will be received
         public void getMessages() {
             // Instantiate the RequestQueue.
             RequestQueue queue = Volley.newRequestQueue(ChatActivity.this);
@@ -256,18 +301,5 @@ public class ChatActivity extends ActionBarActivity {
         messageGetter.run = false;
         messageGetter.cancel(true);
         super.onDestroy();
-    }
-
-    public void audioPlayer(String path, String fileName){
-        //set up MediaPlayer
-        MediaPlayer mp = new MediaPlayer();
-
-        try {
-            mp.setDataSource(path+"/"+fileName);
-            mp.prepare();
-            mp.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }

@@ -27,6 +27,10 @@ public class StartupActivity extends ActionBarActivity {
         Typeface typeFace = Typeface.createFromAsset(getAssets(), "fontmain.ttf");
         myTextView.setTypeface(typeFace);
 
+        /**
+         * doesnt verify users yet, but only checks if a username and password have in fact been entered
+         * they arent stored anywhere just yet
+         * */
         findViewById(R.id.signin_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
