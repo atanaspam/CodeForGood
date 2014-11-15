@@ -12,10 +12,11 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:background="@drawable/circle_green"
-        android:src="@android:drawable/ic_menu_call"
+        android:src="@android:drawable/ic_menu_set_as"
         android:padding="10dp"/>
 
     <ImageView
+        android:id="@+id/look_for_contacts"
         android:layout_marginLeft="67dp"
         android:layout_marginTop="278dp"
         android:layout_width="60dp"
@@ -39,7 +40,7 @@
         android:layout_width="63dp"
         android:layout_height="63dp"
         android:background="@drawable/circle_green"
-        android:src="@android:drawable/ic_menu_camera"
+        android:src="@android:drawable/ic_menu_gallery"
         android:padding="10dp"/>
 
     <ImageView

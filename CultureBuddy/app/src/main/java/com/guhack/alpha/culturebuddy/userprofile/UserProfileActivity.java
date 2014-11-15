@@ -27,11 +27,11 @@ public class UserProfileActivity extends ActionBarActivity {
         Typeface typeFace=Typeface.createFromAsset(getAssets(),"fontmain.ttf");
         myTextView.setTypeface(typeFace);
 
-        findViewById(R.id.website_link).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.look_for_contacts).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("http://gng.org/"));
+                        Uri.parse("http://gng.org/students-2/join-us-online/"));
                 startActivity(i);
             }
         });
@@ -40,6 +40,13 @@ public class UserProfileActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(UserProfileActivity.this, ChatActivity.class));
+            }
+        });
+
+        findViewById(R.id.profile_voice_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserProfileActivity.this, AccountSettingsActivity.class));
             }
         });
     }
