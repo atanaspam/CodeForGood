@@ -1,0 +1,1 @@
+mvn clean install && scp -i /Users/martin/OwnWork/JPM-Code-for-Good-2014/london_team17.pem  target/CodeForGood17.war ubuntu@ec2-54-228-159-65.eu-west-1.compute.amazonaws.com:/usr/share/tomcat7/webapps
