@@ -12,7 +12,7 @@ import com.twilio.sdk.resource.factory.CallFactory;
 public class CallMakingService {
 	TwilioRestClient client;
 	
-	private static final String CALL_RESPONSE_FORMAT = "<Response><Say voice=\"alice\">%s</Say></Response>";
+	private static final String CALL_RESPONSE_FORMAT = "<Response><Pause length=\"2\"/><Say voice=\"alice\">%s</Say></Response>";
 	
 	public CallMakingService() {
 		this.client = new TwilioRestClient(TwilioConstants.ACCOUNT_SID, TwilioConstants.AUTH_TOKEN);
