@@ -34,6 +34,10 @@
             android:name="com.guhack.alpha.culturebuddy.userprofile.AccountSettingsActivity"
             android:label="@string/title_activity_account_settings" >
         </activity>
+        <activity
+            android:name="com.guhack.alpha.culturebuddy.userprofile.ContactsActivity"
+            android:label="@string/title_activity_contacts" >
+        </activity>
     </application>
 
 </manifest>

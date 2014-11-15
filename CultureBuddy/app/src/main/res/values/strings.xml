@@ -7,5 +7,6 @@
     <string name="title_activity_user_profile">UserProfileActivity</string>
     <string name="title_activity_chat">ChatActivity</string>
     <string name="title_activity_account_settings">AccountSettingsActivity</string>
+    <string name="title_activity_contacts">ContactsActivity</string>
 
 </resources>

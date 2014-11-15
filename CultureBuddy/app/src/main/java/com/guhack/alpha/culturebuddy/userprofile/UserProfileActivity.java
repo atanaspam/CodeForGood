@@ -49,6 +49,13 @@ public class UserProfileActivity extends ActionBarActivity {
                 startActivity(new Intent(UserProfileActivity.this, AccountSettingsActivity.class));
             }
         });
+
+        findViewById(R.id.user_friends).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserProfileActivity.this, ContactsActivity.class));
+            }
+        });
     }
 
 

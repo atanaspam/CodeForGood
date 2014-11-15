@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.guhack.alpha.culturebuddy.userprofile.UserProfileActivity;
 
@@ -21,14 +23,18 @@ public class StartupActivity extends ActionBarActivity {
         android.support.v7.app.ActionBar actionbar = getSupportActionBar();
         if (actionbar != null) actionbar.hide();
 
-        TextView myTextView=(TextView)findViewById(R.id.title);
-        Typeface typeFace=Typeface.createFromAsset(getAssets(),"fontmain.ttf");
+        TextView myTextView = (TextView) findViewById(R.id.title);
+        Typeface typeFace = Typeface.createFromAsset(getAssets(), "fontmain.ttf");
         myTextView.setTypeface(typeFace);
 
         findViewById(R.id.signin_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StartupActivity.this, UserProfileActivity.class));
+                if (((EditText) findViewById(R.id.password_entry)).getText().toString().isEmpty() ||
+                        ((EditText) findViewById(R.id.username_entry)).getText().toString().isEmpty())
+                    Toast.makeText(StartupActivity.this, "Please enter a username and password", Toast.LENGTH_SHORT).show();
+                else
+                    startActivity(new Intent(StartupActivity.this, UserProfileActivity.class));
             }
         });
     }

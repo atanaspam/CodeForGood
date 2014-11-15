@@ -27,7 +27,8 @@ public class ChatActivity extends ActionBarActivity {
         setContentView(R.layout.activity_chat);
 
         android.support.v7.app.ActionBar actionbar = getSupportActionBar();
-        if (actionbar != null) actionbar.hide();
+        actionbar.setIcon(R.drawable.ic_aziz);
+        actionbar.setTitle("Aziz Ansari");
 
         /** mock code */
             ArrayList<ChatMessage> list = new ArrayList<ChatMessage>();
