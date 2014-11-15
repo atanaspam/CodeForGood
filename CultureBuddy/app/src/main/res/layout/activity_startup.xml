@@ -1,0 +1,60 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:padding="16dp"
+    tools:context=".StartupActivity"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_global_nomads"/>
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Culture Buddy"
+                android:textSize="30sp"
+                android:gravity="center"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/username_entry"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/password_entry"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/signin_button"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Sign In" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
