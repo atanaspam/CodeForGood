@@ -9,35 +9,37 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="200dp"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_global_nomads_large" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:text="Culture Buddy"
+                android:textSize="43sp"
+                android:layout_marginBottom="25dp"/>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_global_nomads" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Culture Buddy"
-                    android:textSize="30sp"
-                    android:layout_marginBottom="10dp"/>
-
-            </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
             <EditText
                 android:id="@+id/username_entry"
@@ -45,6 +47,7 @@
                 android:layout_height="wrap_content" />
 
             <EditText
+                android:padding="10dp"
                 android:id="@+id/password_entry"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"

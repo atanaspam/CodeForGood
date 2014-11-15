@@ -31,13 +31,16 @@ public class ChatActivity extends ActionBarActivity {
 
         /** mock code */
             ArrayList<ChatMessage> list = new ArrayList<ChatMessage>();
-            for (int i = 0; i< 6;i++){
+            for (String temp : ("Hi!,How are you doing?, Today was a very " +
+                    "long day here in Pakistan so I will write a very long message to show how " +
+                    "line breaks work here, I know you are not responding only because I am not " +
+                    "real so I will not hold it against you.,Are you still there?").split(",")){
                 ChatMessage message = new ChatMessage("Hello, are you there?", false);
                 list.add(message);
             }
         /***/
 
-        adapter = new ChatAdapter("Aziz ansari", list, ChatActivity.this);
+        adapter = new ChatAdapter("Aziz Ansari", list, ChatActivity.this);
         ((ListView) findViewById(R.id.chat_list)).setAdapter(adapter);
         adapter.notifyDataSetChanged();
         ((ListView) findViewById(R.id.chat_list)).setSelection(adapter.getCount()-1);
