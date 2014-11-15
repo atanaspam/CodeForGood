@@ -1,0 +1,13 @@
+/Users/martin/OwnWork/Dev_Java/sts_workspace/jpm-cfg-2014/src/main/java/uk/ac/glasgow/jpmcfg2014/server/controller/ConversationController.java
+/Users/martin/OwnWork/Dev_Java/sts_workspace/jpm-cfg-2014/src/main/java/uk/ac/glasgow/jpmcfg2014/server/services/ConversationService.java
+/Users/martin/OwnWork/Dev_Java/sts_workspace/jpm-cfg-2014/src/main/java/uk/ac/glasgow/jpmcfg2014/server/domain/Conversation.java
+/Users/martin/OwnWork/Dev_Java/sts_workspace/jpm-cfg-2014/src/main/java/uk/ac/glasgow/jpmcfg2014/server/services/ConversationDAO.java
+/Users/martin/OwnWork/Dev_Java/sts_workspace/jpm-cfg-2014/src/main/java/uk/ac/glasgow/jpmcfg2014/server/data/rowmapper/UserRowMapper.java
+/Users/martin/OwnWork/Dev_Java/sts_workspace/jpm-cfg-2014/src/main/java/uk/ac/glasgow/jpmcfg2014/server/domain/UserConversation.java
+/Users/martin/OwnWork/Dev_Java/sts_workspace/jpm-cfg-2014/src/main/java/uk/ac/glasgow/jpmcfg2014/server/services/UserDAO.java
+/Users/martin/OwnWork/Dev_Java/sts_workspace/jpm-cfg-2014/src/main/java/uk/ac/glasgow/jpmcfg2014/server/common/Application.java
+/Users/martin/OwnWork/Dev_Java/sts_workspace/jpm-cfg-2014/src/main/java/uk/ac/glasgow/jpmcfg2014/server/services/UserService.java
+/Users/martin/OwnWork/Dev_Java/sts_workspace/jpm-cfg-2014/src/main/java/uk/ac/glasgow/jpmcfg2014/server/common/URIConstants.java
+/Users/martin/OwnWork/Dev_Java/sts_workspace/jpm-cfg-2014/src/main/java/uk/ac/glasgow/jpmcfg2014/server/domain/User.java
+/Users/martin/OwnWork/Dev_Java/sts_workspace/jpm-cfg-2014/src/main/java/uk/ac/glasgow/jpmcfg2014/server/controller/UserController.java
+/Users/martin/OwnWork/Dev_Java/sts_workspace/jpm-cfg-2014/src/main/java/uk/ac/glasgow/jpmcfg2014/server/domain/Message.java
