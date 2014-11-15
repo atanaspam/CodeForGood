@@ -1,0 +1,16 @@
+uk/ac/glasgow/jpmcfg2014/server/services/UserService$1.class
+uk/ac/glasgow/jpmcfg2014/server/domain/UserConversation.class
+uk/ac/glasgow/jpmcfg2014/server/services/ConversationDAO.class
+uk/ac/glasgow/jpmcfg2014/server/domain/Message.class
+uk/ac/glasgow/jpmcfg2014/server/common/Application.class
+uk/ac/glasgow/jpmcfg2014/server/data/rowmapper/UserRowMapper.class
+uk/ac/glasgow/jpmcfg2014/server/domain/User.class
+uk/ac/glasgow/jpmcfg2014/server/domain/Conversation.class
+uk/ac/glasgow/jpmcfg2014/server/services/UserService.class
+uk/ac/glasgow/jpmcfg2014/server/services/ConversationService$1.class
+uk/ac/glasgow/jpmcfg2014/server/common/URIConstants.class
+uk/ac/glasgow/jpmcfg2014/server/controller/UserController.class
+uk/ac/glasgow/jpmcfg2014/server/services/ConversationService$2.class
+uk/ac/glasgow/jpmcfg2014/server/controller/ConversationController.class
+uk/ac/glasgow/jpmcfg2014/server/services/UserDAO.class
+uk/ac/glasgow/jpmcfg2014/server/services/ConversationService.class
