@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Moderation Web App</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.4/css/jquery.dataTables.css">
+		<script src="jquery-1.11.1.js"></script>
+		<script src="jqscripts.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<div id="company">
+					<h1><img src="img/logo.png" width="55" height="50">
+						&nbsp;Global Nomads Group</h1>
+				</div>
+				<div id="login">
+					<a href="./login.html"><button>Login</button></a>
+					
+					<a href=""><button>Sign Up</button></a>
+				</div>
+			</div> 
+			<div id="content">
+				<div id="nav">
+					<a href="./index.html"><button>Index</button></a>
+					<a href="./activeconv.html"><button>Active conversations</button></a>
+					<a href="./contacts.html"><button>Contacts</button></a>
+					<a href=""><button>Students</button></a>
+				</div>
+				<div id="main">
+					<ul>
+						<li>
+							<h2>Moderation web app</h2>
+							<h3>Active conversations</h3>
+							<br>
+						</li>	
+						<li>
+							<table id="tableId">
+						    <thead>
+						      <tr>
+						      	<th>id</th>
+						      	<th>Country</th>
+						      	<th>Reciever</th>
+						      	<th>Messages</th>
+						      	<th>Unread</th>
+						      </tr>
+						    </thead>
+						    <tbody>
+						      <tr>
+						      	<td>1</td>
+						      	<td><img id="icon2" height="17" width="20"></td>
+						      	<td>Bob</td>
+						      	<td>23</td>
+						      	<td>2</td>
+						      </tr>
+						      <tr>
+						      	<td>2</td>
+						      	<td><img id="icon3" height="17" width="20"></td>
+						      	<td>Alice</td>
+						      	<td>5</td>
+						      	<td>0</td>
+						      </tr>
+						      <tr>
+						      	<td>3</td>
+						      	<td><img id="icon1" height="17" width="20"></td>
+						      	<td>Adoby</td>
+						      	<td>14</td>
+						      	<td>1</td>
+						      </tr>
+						      <tr>
+						      	<td>4</td>
+						      	<td><img id="icon4" height="17" width="20"></td>
+						      	<td>Radu</td>
+						      	<td>1</td>
+						      	<td>0</td>
+						      </tr>
+						    </tbody>
+						  </table>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="footer">
+				Copyright &copy; Global Nomads Group 2014
+			</div>
+		</div>
+  <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="jqscripts.js"></script>
+	</body>
+</html>

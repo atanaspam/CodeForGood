@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Moderation Web App</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.4/css/jquery.dataTables.css">
+		<script src="jquery-1.11.1.js"></script>
+		<script src="jqscripts.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<div id="company">
+					<h1><img src="img/logo.png" width="55" height="50">
+						&nbsp;Global Nomads Group</h1>
+				</div>
+				<div id="login">
+					<a href="./login.html"><button>Login</button></a>
+					
+					<a href=""><button>Sign Up</button></a>
+				</div>
+			</div> 
+			<div id="content">
+				<div id="nav">
+					<a href="./index.html"><button>Index</button></a>
+					<a href="./activeconv.html"><button>Active conversations</button></a>
+					<a href="./contacts.html"><button>Contacts</button></a>
+					<a href=""><button>Students</button></a>
+				</div>
+				<div id="main">
+					<h2>Message Centre</h2>
+					<br>
+					<div id="messageHistory">
+						<table id="tableId">
+						    <thead>
+						      <th>History</th><th></th>
+						    </thead>
+						    <tbody>
+						    	<tr>
+						    		<td>[Dan Page] Let's talk</td>
+						    		<td><button>Reply</button></td>
+						    	</tr>
+						    	<tr>
+						    		<td>[Sowetu Di] Hi</td>
+						    		<td><button>Reply</button></td>
+						    	</tr>
+						    </tbody>
+						</table>
+					</div>
+					<div id="messageComposer">
+						<form>
+							<textarea rows="16" cols="40">Compose your new message here</textarea>
+							<div>
+								<input type="submit" value="Send">
+								<input type="reset" value="Clear">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+				Copyright &copy; Global Nomads Group 2014
+			</div>
+		</div>
+  <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="jqscripts.js"></script>
+	</body>
+</html>

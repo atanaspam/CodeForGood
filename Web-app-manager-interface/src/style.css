@@ -1,0 +1,88 @@
+#container {
+	background-color: white;
+	width: 800px;
+	border-radius: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#company {
+	float: left;
+	width: 500;
+}
+
+#login {
+	float : right;
+	padding-top: 8px;
+	width : 300;
+}
+
+#header {
+	background-color: #0B0B61;
+	border-radius: 10px 10px 0px 0px;
+	height: 50px;
+	color: white;
+	padding: 10px;
+}
+
+#content {
+	padding : 10px;
+	clear : both;
+}
+
+#nav {
+	width: 180px;
+	float: left;
+}
+
+#main {
+	width: 600px;
+	float: right;
+}
+
+#footer {
+	text-align: right;
+	clear: both;
+	padding: 10px;
+	background-color: #999999;
+	color: white;
+	border-radius: 0px 0px 10px 10px;
+}
+
+#nav button {
+	width: 150px;
+	height: 25px;
+	text-align: left;
+}
+
+#header button {
+	width: 100px;
+	height: 25px;
+}
+
+#messageHistory {
+	float: left;
+	width: 250px;
+}
+
+#messageComposer {
+	float: right;
+}
+
+body {
+	background-color: #EEEEEE;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3 {
+	margin: 0;
+}
+
+ul {
+	padding: 0;
+	margin-top: 0;
+}
+
+li {
+	list-style-type: none;
+}
