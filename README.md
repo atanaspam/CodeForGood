@@ -1,4 +1,0 @@
-CodeForGood
-===========
-
-Code n Stuff
