@@ -269,7 +269,7 @@ public class ChatActivity extends ActionBarActivity {
         public void getMessages() {
             // Instantiate the RequestQueue.
             RequestQueue queue = Volley.newRequestQueue(ChatActivity.this);
-            String url = "http://ec2-54-228-159-65.eu-west-1.compute.amazonaws.com:8080/CodeForGood17/receivesms?name=vlad";
+            String url = "http://ec2-54-228-159-65.eu-west-1.compute.amazonaws.com:8080/CodeForGood17/receivesms?name=jpm";
 // Request a string response from the provided URL.
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                     new Response.Listener<String>() {
