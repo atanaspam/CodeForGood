@@ -13,6 +13,10 @@ import android.widget.TextView;
 import com.guhack.alpha.culturebuddy.R;
 import com.guhack.alpha.culturebuddy.chat.ChatActivity;
 
+/**
+ * this is the control center of the app
+ * all the activities are launched from here
+ */
 public class UserProfileActivity extends ActionBarActivity {
 
     @Override
@@ -26,6 +30,15 @@ public class UserProfileActivity extends ActionBarActivity {
         TextView myTextView=(TextView)findViewById(R.id.profile_title);
         Typeface typeFace=Typeface.createFromAsset(getAssets(),"fontmain.ttf");
         myTextView.setTypeface(typeFace);
+
+        findViewById(R.id.website_link).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("http://gng.org/"));
+                startActivity(i);
+            }
+        });
 
         findViewById(R.id.look_for_contacts).setOnClickListener(new View.OnClickListener() {
             @Override

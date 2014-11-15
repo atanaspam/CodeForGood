@@ -7,6 +7,10 @@ import android.view.MenuItem;
 
 import com.guhack.alpha.culturebuddy.R;
 
+/**
+ * stub view that shows how the settings might look like
+ * has no functionality
+ */
 public class AccountSettingsActivity extends ActionBarActivity {
 
     @Override
