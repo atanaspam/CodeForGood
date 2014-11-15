@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.guhack.alpha.culturebuddy.R;
+import com.guhack.alpha.culturebuddy.chat.ChatActivity;
 
 public class UserProfileActivity extends ActionBarActivity {
 
@@ -32,6 +33,13 @@ public class UserProfileActivity extends ActionBarActivity {
                 Intent i = new Intent(Intent.ACTION_VIEW,
                         Uri.parse("http://gng.org/"));
                 startActivity(i);
+            }
+        });
+
+        findViewById(R.id.chat_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserProfileActivity.this, ChatActivity.class));
             }
         });
     }
