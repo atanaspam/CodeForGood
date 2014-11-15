@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/profile_background"
+    tools:context="com.guhack.alpha.culturebuddy.userprofile.UserProfileActivity">
+
+    <ImageView
+        android:id="@+id/profile_voice_button"
+        android:layout_marginLeft="74dp"
+        android:layout_marginTop="166dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:background="@drawable/circle_green"
+        android:src="@android:drawable/ic_menu_call"
+        android:padding="10dp"/>
+
+    <ImageView
+        android:layout_marginLeft="67dp"
+        android:layout_marginTop="278dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/circle_green"
+        android:src="@android:drawable/ic_input_add"/>
+
+    <ImageView
+        android:id="@+id/chat_button"
+        android:layout_marginLeft="165dp"
+        android:layout_marginTop="112dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:background="@drawable/circle_green"
+        android:src="@android:drawable/stat_notify_chat"
+        android:padding="10dp"/>
+
+    <ImageView
+        android:layout_marginLeft="216dp"
+        android:layout_marginTop="275dp"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
+        android:background="@drawable/circle_green"
+        android:src="@android:drawable/ic_menu_camera"
+        android:padding="10dp"/>
+
+    <ImageView
+        android:id="@+id/website_link"
+        android:layout_marginLeft="193dp"
+        android:layout_marginTop="189dp"
+        android:layout_width="67dp"
+        android:layout_height="67dp"
+        android:background="@drawable/circle_green"
+        android:src="@android:drawable/ic_dialog_info"
+        android:padding="10dp"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:id="@+id/profile_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="culture buddy"
+        android:textSize="30sp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="13dp"/>
+
+    <ImageView
+        android:src="@drawable/ic_global_nomads"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"/>
+    </LinearLayout>
+</RelativeLayout>

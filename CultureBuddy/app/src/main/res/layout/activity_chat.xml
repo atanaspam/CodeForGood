@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.guhack.alpha.culturebuddy.chat.ChatActivity">
+
+    <LinearLayout
+        android:id="@+id/sound_view"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:id="@+id/chat_name_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Azis Ansari: "/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@android:drawable/ic_media_play"/>
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/text_entry"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:padding="5dp">
+
+
+        <EditText
+            android:gravity="top"
+            android:id="@+id/your_message"
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bubble_self"/>
+        
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:textSize="10sp"
+                android:id="@+id/send_message_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SEND"/>
+
+            <Button
+                android:textSize="10sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="REC"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    <ListView
+        android:layout_below="@+id/sound_view"
+        android:id="@+id/chat_list"
+        android:layout_above="@+id/text_entry"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"/>
+
+
+</RelativeLayout>
