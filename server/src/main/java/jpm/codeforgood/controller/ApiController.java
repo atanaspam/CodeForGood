@@ -3,6 +3,7 @@ package jpm.codeforgood.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import jpm.codeforgood.twilio.CallMakingService;
 import jpm.codeforgood.twilio.SMSReceivingService;
 import jpm.codeforgood.twilio.SMSSendingService;
 
@@ -36,8 +37,8 @@ public class ApiController {
 	String lastMsg = "";
 	
 	
-	@RequestMapping(value = "/sendsms", method = RequestMethod.GET, params = {"to", "text"})
-	public @ResponseBody String getAllUsers(@RequestParam(value = "from") String fromUserName, 
+	@RequestMapping(value = "/sendsms", method = RequestMethod.GET, params = {"from", "to", "text"})
+	public @ResponseBody String sendsms(@RequestParam(value = "from") String fromUserName, 
 											@RequestParam(value = "to") String toUserName, 
 											@RequestParam(value = "text") String text) {
 		
@@ -48,7 +49,7 @@ public class ApiController {
 			sss = new SMSSendingService();
 			if (!lastMsg.equals(text)) {
 				lastMsg = text;
-				if (fromUserName.equals("vlad")) {
+				if (fromUserName.equals("vlad") || fromUserName.equals("jpm")) {
 					text = Translation.Translation.translate(text, "EN", "PT"); 
 				}
 				return sss.sendMessage("+" + phoneNo, text);
@@ -59,8 +60,25 @@ public class ApiController {
 		return null;
 	}
 	
+	@RequestMapping(value = "/call", method = RequestMethod.GET, params = {"from", "to", "text"})
+	public @ResponseBody String call(@RequestParam(value = "from") String fromUserName, 
+											@RequestParam(value = "to") String toUserName, 
+											@RequestParam(value = "text") String text) {
+		
+		String phoneNo = getPhoneForUsername(toUserName);
+		
+		CallMakingService cms;
+		try {
+			cms = new CallMakingService();
+			return cms.makeCall("+" + phoneNo, text);
+		} catch (TwilioRestException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	@RequestMapping(value = "/receivesms", method = RequestMethod.GET, params = {"name"})
-	public @ResponseBody String getAllUsers(@RequestParam(value = "name") String name) {
+	public @ResponseBody String receivesms(@RequestParam(value = "name") String name) {
 		SMSReceivingService srs = new SMSReceivingService();
 		ArrayList<Message> l = new ArrayList<Message>();
 		List<Message> received;
@@ -75,7 +93,7 @@ public class ApiController {
 				l.add(m);
 		}
 		
-		if (getPhoneForUsername("martin").equals(l.get(0).getFrom().substring(1))) {
+		if (getPhoneForUsername("martin").equals(l.get(0).getFrom().substring(1)) || getPhoneForUsername("jpm").equals(l.get(0).getFrom().substring(1))) {
 			return Translation.Translation.translate(l.get(0).getBody(), "PT", "EN"); 
 		}
 		return l.get(0).getBody();
@@ -84,6 +102,8 @@ public class ApiController {
 	private String getPhoneForUsername(String user) {
 		if (user.equals("martin"))
 			return "447574155899";
+		if (user.equals("jpm"))
+			return "447500992793";
 		else if (user.equals("issy"))
 			return "447592547625";
 		else if (user.equals("anthony"))
