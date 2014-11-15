@@ -13,8 +13,15 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.guhack.alpha.culturebuddy.R;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 public class ChatActivity extends ActionBarActivity {
@@ -44,14 +51,16 @@ public class ChatActivity extends ActionBarActivity {
         adapter = new ChatAdapter("Aziz Ansari", list, ChatActivity.this);
         ((ListView) findViewById(R.id.chat_list)).setAdapter(adapter);
         adapter.notifyDataSetChanged();
-        ((ListView) findViewById(R.id.chat_list)).setSelection(adapter.getCount()-1);
+        ((ListView) findViewById(R.id.chat_list)).setSelection(adapter.getCount() - 1);
 
         findViewById(R.id.send_message_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String msg = ((EditText) findViewById(R.id.your_message)).getText().toString();
+                if (msg.isEmpty()) return;
                 adapter.addMessage(new ChatMessage(msg, true));
-                ((ListView) findViewById(R.id.chat_list)).setSelection(adapter.getCount()-1);
+                send(msg);
+                ((ListView) findViewById(R.id.chat_list)).setSelection(adapter.getCount() - 1);
                 ((EditText) findViewById(R.id.your_message)).setText("");
             }
         });
@@ -149,5 +158,30 @@ public class ChatActivity extends ActionBarActivity {
             }
 
         }
+    }
+
+    private void send(String msg){
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String fromuser = "vlad";
+        String touser = "martin";
+        String url = String.format("http://ec2-54-228-159-65.eu-west-1.compute.amazonaws.com:8080/CodeForGood17" +
+                "/sendsms?from=%s&to=%s&text=%s", fromuser, touser, URLEncoder.encode(msg));
+
+// Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>(){
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
     }
 }
