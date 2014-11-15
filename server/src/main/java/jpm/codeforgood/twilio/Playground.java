@@ -27,7 +27,7 @@ public class Playground {
 		}
 		
 		CallMakingService cms = new CallMakingService();
-		// cms.makeCall("+447950188801", "Hello Mr. Alexander. Do you know that Christos'es mustache is beautiful? It is mustache is manly. It is mustache is robust. It is mustache is all-male. It is mustache is brave. It is mustache is macho. It is mustache is manful. It is mustache is adventurous.. That is all.");
+		cms.makeCall("+447950188801", "Christos, I regret to inform you that you have small penis.");
 	}
 	
 	private static String getPhoneForUsername(String user) {
