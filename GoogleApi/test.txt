@@ -1,0 +1,6 @@
+Important info about the Google API:
+
+Usage limits:
+	Google Translate API has a default limit of 2 M chars/day. 
+	You can increase this limit up to 50 M chars/day in the Developers Console by following the instructions below.
+	If you need to translate more than 50 M chars/day, please contact us
