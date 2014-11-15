@@ -35,7 +35,7 @@ public class ChatActivity extends ActionBarActivity {
                     "long day here in Pakistan so I will write a very long message to show how " +
                     "line breaks work here, I know you are not responding only because I am not " +
                     "real so I will not hold it against you.,Are you still there?").split(",")){
-                ChatMessage message = new ChatMessage("Hello, are you there?", false);
+                ChatMessage message = new ChatMessage(temp, false);
                 list.add(message);
             }
         /***/
@@ -51,6 +51,7 @@ public class ChatActivity extends ActionBarActivity {
                 String msg = ((EditText) findViewById(R.id.your_message)).getText().toString();
                 adapter.addMessage(new ChatMessage(msg, true));
                 ((ListView) findViewById(R.id.chat_list)).setSelection(adapter.getCount()-1);
+                ((EditText) findViewById(R.id.your_message)).setText("");
             }
         });
     }
