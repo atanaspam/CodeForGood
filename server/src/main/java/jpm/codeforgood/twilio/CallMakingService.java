@@ -12,7 +12,8 @@ import com.twilio.sdk.resource.factory.CallFactory;
 public class CallMakingService {
 	TwilioRestClient client;
 	
-	private static final String CALL_RESPONSE_FORMAT = "<Response><Pause length=\"2\"/><Say voice=\"alice\">%s</Say></Response>";
+	// alice can make calls in many languages.. see https://www.twilio.com/docs/api/twiml/say for list
+	private static final String CALL_RESPONSE_FORMAT = "<Response><Pause length=\"2\"/><Say voice=\"alice\" language=\"en-GB\">%s</Say></Response>";
 	
 	public CallMakingService() {
 		this.client = new TwilioRestClient(TwilioConstants.ACCOUNT_SID, TwilioConstants.AUTH_TOKEN);
