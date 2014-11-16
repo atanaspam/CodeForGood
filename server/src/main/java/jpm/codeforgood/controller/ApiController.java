@@ -99,21 +99,9 @@ public class ApiController {
 		return l.get(0).getBody();
 	}
 	
-	private String getPhoneForUsername(String user) {
-		if (user.equals("martin"))
-			return "447574155899";
-		if (user.equals("jpm"))
-			return "447500992793";
-		else if (user.equals("issy"))
-			return "447592547625";
-		else if (user.equals("anthony"))
-			return "447542841422";
-		else if (user.equals("atanas"))
-			return "447453268653";
-		else if (user.equals("sadik"))
-			return "447462437621";
-		else 
-			return "447574155899";
-	}
+	private static String getPhoneForUsername(String user) {
+		// fetch this from DB
+		return "440000000000";
+}
 
 }
